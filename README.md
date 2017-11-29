@@ -1,51 +1,63 @@
 ## Advanced Lane Finding
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-
-In this project, your goal is to write a software pipeline to identify the lane boundaries in a video, but the main output or product we want you to create is a detailed writeup of the project.  Check out the [writeup template](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup.  
-
-Creating a great writeup:
----
-A great writeup should include the rubric points as well as your description of how you addressed each point.  You should include a detailed description of the code used in each step (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-
-Setup:
+The Steps
 ---
 
-The initial setup includes creating the Python environment with the packages that the project needs and uses.
+The steps of this project are listed below. You can have a look at [AdvancedLaneDetection.ipynb](AdvancedLaneDetection.ipynb) for the code.
 
-matplotlib
-    plotting and image processing tools 
-NumPy
-    foundational scientific computing library 
-MoviePy
-    video processing tools 
-OpenCV
-    computer vision library 
-    
-The Project
+###Distortion Correction
+
+The images for camera calibration are stored in the folder called `camera_cal`. I compute the camera matrix and distortion co-efficients to undistort the image.
+
+![png](output_images/CameraCal_output.png)
+
+
+###Gradients and color thresholds.
+I applied thresholds on gradients and colors to obtain a binary thresholded image.
+
+![png](output_images/ThresholdedBinaryWarped_Output.png)
+
+
+###Perspective transform ("birds-eye view").
+I extracted the vertices to perform a perspective transform and the polygon with these vertices is drawn on the image 
+
+![png](output_images/perspectiveTransform.png)
+
+###Detect lane pixels (sliding window search).
+I then perform a sliding window search.
+
+![png](output_images/LaneDetected.png)
+
+
+###Example Result
+Warp the detected lane boundaries back onto the original image
+
+![png](output_images/FinalImage.png)
+
+The Video
+---
+The pipeline is applied to a video. 
+
+[![Project Video](output_images/project_video_output.mp4)
+
+
+
+Discussion
 ---
 
-Goals and Objectives
+The code does not perform well on challenge videos due to varied illumination color shades in challenge videos. For further research I plan to refine my pipeline to work in more varied environments and nomralization of the image.
 
-The goals / steps of this project are the following:
+References:
 
-    Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
-    Apply image distortion
-    Finding a thresholded binary image (using gradients and HSV color space)
-    Apply a perspective transform to rectify binary image ("birds-eye view").
-    Detect lane pixels and Using sliding window technique to find the lane lines
-    Determine the curvature of the lane and vehicle position with respect to center.
-    Warp the detected lane boundaries back onto the original image.
-    Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+1) More robust lane finding using advanced computer vision techniques https://chatbotslife.com/robust-lane-finding-using-advanced-computer-vision-techniques-46875bb3c8aa
 
+2) Camera calibration With OpenCV: https://docs.opencv.org/2.4/doc/tutorials/calib3d/camera_calibration/camera_calibration.html
 
+3) Radius curvature: http://www.intmath.com/applications-differentiation/8-radius-curvature.php
 
-The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing your pipeline on single frames.  If you want to extract more test images from the videos, you can simply use an image writing method like `cv2.imwrite()`, i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.  
+4) https://github.com/Nallo/CarND-P4-Advanced-Lane-Lines
+
+5) https://medium.com/@ajsmilutin/advanced-lane-finding-5d0be4072514
 
 
 
