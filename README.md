@@ -38,8 +38,7 @@ The Video
 ---
 The pipeline is applied to a video. 
 
-[![Project Video](output_images/project_video_output.mp4)
-
+![Project Video](output_images/project_video_output.mp4)
 
 
 Discussion
