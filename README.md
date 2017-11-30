@@ -5,14 +5,14 @@ The Steps
 
 The steps of this project are listed below. You can have a look at [AdvancedLaneDetection.ipynb](AdvancedLaneDetection.ipynb) for the code.
 
-###Distortion Correction
+1) Distortion Correction
 
 The images for camera calibration are stored in the folder called `camera_cal`. I compute the camera matrix and distortion co-efficients to undistort the image.
 
 ![png](output_images/CameraCal_output.png)
 
 
-###Gradients and color thresholds.
+2) Gradients and color thresholds.
 I applied thresholds on gradients and colors to obtain a binary thresholded image.
 
 ![png](output_images/ThresholdedBinaryWarped_Output.png)
@@ -23,13 +23,13 @@ I extracted the vertices to perform a perspective transform and the polygon with
 
 ![png](output_images/perspectiveTransform.png)
 
-###Detect lane pixels (sliding window search).
+3) Detect lane pixels (sliding window search).
 I then perform a sliding window search.
 
 ![png](output_images/LaneDetected.png)
 
 
-###Example Result
+4) Example Result
 Warp the detected lane boundaries back onto the original image
 
 ![png](output_images/FinalImage.png)
